@@ -1234,13 +1234,13 @@ bdev_rbd_create(struct spdk_bdev **bdev, const char *name, const char *user_id,
 	if (name) {
 		rbd->disk.name = strdup(name);
 	} else {
-		rbd->disk.name = spdk_sprintf_alloc("Ceph%d", bdev_rbd_count);
+		rbd->disk.name = spdk_sprintf_alloc("Stone%d", bdev_rbd_count);
 	}
 	if (!rbd->disk.name) {
 		bdev_rbd_free(rbd);
 		return -ENOMEM;
 	}
-	rbd->disk.product_name = "Ceph Rbd Disk";
+	rbd->disk.product_name = "Stone Rbd Disk";
 	bdev_rbd_count++;
 
 	rbd->disk.write_cache = 0;
@@ -1305,7 +1305,7 @@ bdev_rbd_resize(struct spdk_bdev *bdev, const uint64_t new_size_in_mb)
 	rc = rbd_resize(rbd_io_ch->disk->image, new_size_in_byte);
 	spdk_put_io_channel(ch);
 	if (rc != 0) {
-		SPDK_ERRLOG("failed to resize the ceph bdev.\n");
+		SPDK_ERRLOG("failed to resize the stone bdev.\n");
 		return rc;
 	}
 

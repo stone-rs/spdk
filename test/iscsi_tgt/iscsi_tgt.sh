@@ -42,8 +42,8 @@ if [ $RUN_NIGHTLY -eq 1 ]; then
 	run_test "iscsi_tgt_digests" ./test/iscsi_tgt/digests/digests.sh
 fi
 if [ $SPDK_TEST_RBD -eq 1 ]; then
-	if ! hash ceph; then
-		echo "ERROR: SPDK_TEST_RBD requested but no ceph installed!"
+	if ! hash stone; then
+		echo "ERROR: SPDK_TEST_RBD requested but no stone installed!"
 		false
 	fi
 	run_test "iscsi_tgt_rbd" ./test/iscsi_tgt/rbd/rbd.sh

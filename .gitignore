@@ -39,3 +39,6 @@ PYTHON_COMMAND
 test_completions.txt
 timing.txt
 test/common/build_config.sh
+
+.idea
+.vscode

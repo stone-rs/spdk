@@ -3639,14 +3639,14 @@ Example response:
 
 ### bdev_rbd_register_cluster {#rpc_bdev_rbd_register_cluster}
 
-This method is available only if SPDK was build with Ceph RBD support.
+This method is available only if SPDK was build with Stone RBD support.
 
 #### Parameters
 
 Name                    | Optional | Type        | Description
 ----------------------- | -------- | ----------- | -----------
 name                    | Required | string      | Registerd Rados cluster object name
-user_id                 | Optional | string      | Ceph ID (i.e. admin, not client.admin)
+user_id                 | Optional | string      | Stone ID (i.e. admin, not client.admin)
 config_param            | Optional | string map  | Explicit librados configuration
 config_file             | Optional | string      | File path of libraodos configuration file
 key_file                | Optional | string      | File path of libraodos key file
@@ -3656,19 +3656,19 @@ to rbd module, it uses user_id + config_param or user_id + config_file +
 key_file or user_id + config_param + config_file + key_file to identify
 a Rados cluster object.
 
-When accessing the Ceph cluster as some user other than "admin" (the
+When accessing the Stone cluster as some user other than "admin" (the
 default), the "user_id" has to be set.
 
 The configuration items and secret key can be specified by setting config_param,
 config_file and key_file, all of them, or none of them. If only config_param is
 passed, all key/value pairs are passed to rados_conf_set to configure cluster access.
 In practice, "mon_host" (= list of monitor address+port) and "key" (= the secret key
-stored in Ceph keyrings) are enough. If config_file and key_file are specified, they must
-exist with all relevant settings for accessing the Ceph cluster. If config_param, config_file
+stored in Stone keyrings) are enough. If config_file and key_file are specified, they must
+exist with all relevant settings for accessing the Stone cluster. If config_param, config_file
 and key_file are specified, get the key/value pairs from config_file first and set to
 rados_conf_set function, then set pairs in config_param and keyring in key_file. If nothing
 is specified, it will get configuration file and key file from the default location
-/etc/ceph/ceph.conf and /etc/ceph/ceph.client.user_id.keyring.
+/etc/stone/stone.conf and /etc/stone/stone.client.user_id.keyring.
 
 #### Result
 
@@ -3683,8 +3683,8 @@ Example request:
   "params": {
     "name": "rbd_cluster",
     "user_id": cinder,
-    "config_file": "/root/ceph_conf/ceph.conf",
-    "key_file": "/root/ceph_conf/ceph.client.cinder.keyring"
+    "config_file": "/root/stone_conf/stone.conf",
+    "key_file": "/root/stone_conf/stone.client.cinder.keyring"
   },
   "jsonrpc": "2.0",
   "method": "bdev_rbd_register_cluster",
@@ -3705,7 +3705,7 @@ response:
 
 ### bdev_rbd_unregister_cluster {#rpc_bdev_rbd_unregister_cluster}
 
-This method is available only if SPDK was build with Ceph RBD support.
+This method is available only if SPDK was build with Stone RBD support.
 If there is still rbd bdev using this cluster, the unregisteration operation
 will fail.
 
@@ -3746,7 +3746,7 @@ Example response:
 
 ### bdev_rbd_get_clusters_info {#rpc_bdev_rbd_get_clusters_info}
 
-This method is available only if SPDK was build with Ceph RBD support.
+This method is available only if SPDK was build with Stone RBD support.
 
 #### Result
 
@@ -3787,14 +3787,14 @@ Example response:
 
 Create @ref bdev_config_rbd bdev
 
-This method is available only if SPDK was build with Ceph RBD support.
+This method is available only if SPDK was build with Stone RBD support.
 
 #### Parameters
 
 Name                    | Optional | Type        | Description
 ----------------------- | -------- | ----------- | -----------
 name                    | Optional | string      | Bdev name
-user_id                 | Optional | string      | Ceph ID (i.e. admin, not client.admin)
+user_id                 | Optional | string      | Stone ID (i.e. admin, not client.admin)
 pool_name               | Required | string      | Pool name
 rbd_name                | Required | string      | Image name
 block_size              | Required | number      | Block size
@@ -3802,12 +3802,12 @@ config                  | Optional | string map  | Explicit librados configurati
 cluster_name            | Optional | string      | Rados cluster object name created in this module.
 uuid                    | Optional | string      | UUID of new bdev
 
-If no config is specified, Ceph configuration files must exist with
+If no config is specified, Stone configuration files must exist with
 all relevant settings for accessing the pool. If a config map is
 passed, the configuration files are ignored and instead all key/value
 pairs are passed to rados_conf_set to configure cluster access. In
 practice, "mon_host" (= list of monitor address+port) and "key" (= the
-secret key stored in Ceph keyrings) are enough.
+secret key stored in Stone keyrings) are enough.
 
 When accessing the image as some user other than "admin" (the
 default), the "user_id" has to be set.
@@ -3822,7 +3822,7 @@ Name of newly created bdev.
 
 #### Example
 
-Example request with `key` from `/etc/ceph/ceph.client.admin.keyring`:
+Example request with `key` from `/etc/stone/stone.client.admin.keyring`:
 
 ~~~json
 {
@@ -3849,7 +3849,7 @@ response:
 {
   "jsonrpc": "2.0",
   "id": 1,
-  "result": "Ceph0"
+  "result": "Stone0"
 }
 ~~~
 
@@ -3876,7 +3876,7 @@ response:
 {
   "jsonrpc": "2.0",
   "id": 1,
-  "result": "Ceph0"
+  "result": "Stone0"
 }
 ~~
 
@@ -3884,7 +3884,7 @@ response:
 
 Delete @ref bdev_config_rbd bdev
 
-This method is available only if SPDK was build with Ceph RBD support.
+This method is available only if SPDK was build with Stone RBD support.
 
 #### Result
 
@@ -3925,7 +3925,7 @@ Example response:
 
 Resize @ref bdev_config_rbd bdev
 
-This method is available only if SPDK was build with Ceph RBD support.
+This method is available only if SPDK was build with Stone RBD support.
 
 #### Result
 

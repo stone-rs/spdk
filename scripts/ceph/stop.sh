@@ -2,11 +2,11 @@
 
 set -x
 
-base_dir=/var/tmp/ceph
-image=${base_dir}/ceph_raw.img
+base_dir=/var/tmp/stone
+image=${base_dir}/stone_raw.img
 dev=/dev/loop200
 
-pkill -9 ceph
+pkill -9 stone
 sleep 3
 umount ${dev}p2
 losetup -d $dev

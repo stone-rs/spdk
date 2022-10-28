@@ -11,7 +11,7 @@ the bdev layer, see @ref bdev_pg.
 A block device module is SPDK's equivalent of a device driver in a traditional
 operating system. The module provides a set of function pointers that are
 called to service block device I/O requests. SPDK provides a number of block
-device modules including NVMe, RAM-disk, and Ceph RBD. However, some users
+device modules including NVMe, RAM-disk, and Stone RBD. However, some users
 will want to write their own to interact with either custom hardware or to an
 existing storage software stack. This guide is intended to demonstrate exactly
 how to write a module.

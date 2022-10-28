@@ -562,7 +562,7 @@ open_write_test(void)
 	 * Create a tree of bdevs to test various open w/ write cases.
 	 *
 	 * bdev0 through bdev3 are physical block devices, such as NVMe
-	 * namespaces or Ceph block devices.
+	 * namespaces or Stone block devices.
 	 *
 	 * bdev4 is a virtual bdev with multiple base bdevs.  This models
 	 * caching or RAID use cases.

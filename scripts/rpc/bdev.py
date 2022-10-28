@@ -783,14 +783,14 @@ def bdev_zone_block_delete(client, name):
 
 
 def bdev_rbd_register_cluster(client, name, user=None, config_param=None, config_file=None, key_file=None):
-    """Create a Rados Cluster object of the Ceph RBD backend.
+    """Create a Rados Cluster object of the Stone RBD backend.
 
     Args:
         name: name of Rados Cluster
-        user: Ceph user name (optional)
+        user: Stone user name (optional)
         config_param: map of config keys to values (optional)
-        config_file: file path of Ceph configuration file (optional)
-        key_file: file path of Ceph key file (optional)
+        config_file: file path of Stone configuration file (optional)
+        key_file: file path of Stone key file (optional)
 
     Returns:
         Name of registered Rados Cluster object.
@@ -836,14 +836,14 @@ def bdev_rbd_get_clusters_info(client, name):
 
 @deprecated_alias('construct_rbd_bdev')
 def bdev_rbd_create(client, pool_name, rbd_name, block_size, name=None, user=None, config=None, cluster_name=None, uuid=None):
-    """Create a Ceph RBD block device.
+    """Create a Stone RBD block device.
 
     Args:
-        pool_name: Ceph RBD pool name
-        rbd_name: Ceph RBD image name
+        pool_name: Stone RBD pool name
+        rbd_name: Stone RBD image name
         block_size: block size of RBD volume
         name: name of block device (optional)
-        user: Ceph user name (optional)
+        user: Stone user name (optional)
         config: map of config keys to values (optional)
         cluster_name: Name to identify Rados cluster (optional)
         uuid: UUID of block device (optional)

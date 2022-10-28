@@ -29,7 +29,7 @@ is_repo() { yum repolist --all | grep -q "^$1"; }
 
 disclaimer
 
-# First, add extra EPEL, ELRepo, Ceph repos to have a chance of covering most of the packages
+# First, add extra EPEL, ELRepo, Stone repos to have a chance of covering most of the packages
 # on the enterprise systems, like RHEL.
 if [[ $ID == centos || $ID == rhel ]]; then
 	repos=() enable=("epel" "elrepo" "elrepo-testing")
@@ -37,7 +37,7 @@ if [[ $ID == centos || $ID == rhel ]]; then
 	if [[ $VERSION_ID == 7* ]]; then
 		repos+=("https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm")
 		repos+=("https://www.elrepo.org/elrepo-release-7.el7.elrepo.noarch.rpm")
-		[[ $ID == centos ]] && repos+=("centos-release-ceph-nautilus.noarch")
+		[[ $ID == centos ]] && repos+=("centos-release-stone-nautilus.noarch")
 		[[ $ID == centos ]] && repos+=("centos-release-scl-rh")
 		# Disable liburing, see https://github.com/spdk/spdk/issues/1564
 		if [[ $INSTALL_LIBURING == true ]]; then
@@ -48,7 +48,7 @@ if [[ $ID == centos || $ID == rhel ]]; then
 	if [[ $VERSION_ID == 8* ]]; then
 		repos+=("https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm")
 		repos+=("https://www.elrepo.org/elrepo-release-8.el8.elrepo.noarch.rpm")
-		[[ $ID == centos ]] && repos+=("centos-release-ceph-nautilus.noarch")
+		[[ $ID == centos ]] && repos+=("centos-release-stone-nautilus.noarch")
 		# Add PowerTools needed for install CUnit-devel in Centos8
 		if [[ $ID == centos ]]; then
 			is_repo "PowerTools" && enable+=("PowerTools")

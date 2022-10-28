@@ -31,7 +31,7 @@ timing_exit start_iscsi_tgt
 
 $rpc_py iscsi_create_portal_group $PORTAL_TAG $TARGET_IP:$ISCSI_PORT
 $rpc_py iscsi_create_initiator_group $INITIATOR_TAG $INITIATOR_NAME $NETMASK
-rbd_cluster_name="$($rpc_py bdev_rbd_register_cluster iscsi_rbd_cluster --key-file /etc/ceph/ceph.client.admin.keyring --config-file /etc/ceph/ceph.conf)"
+rbd_cluster_name="$($rpc_py bdev_rbd_register_cluster iscsi_rbd_cluster --key-file /etc/stone/stone.client.admin.keyring --config-file /etc/stone/stone.conf)"
 $rpc_py bdev_rbd_get_clusters_info -b $rbd_cluster_name
 rbd_bdev="$($rpc_py bdev_rbd_create $RBD_POOL $RBD_NAME 4096 -c $rbd_cluster_name)"
 $rpc_py bdev_get_bdevs
@@ -44,11 +44,11 @@ if [ $total_size != 2000 ]; then
 	echo "resize failed."
 	exit 1
 fi
-# "Ceph0:0" ==> use Ceph0 blockdev for LUN0
+# "Stone0:0" ==> use Stone0 blockdev for LUN0
 # "1:2" ==> map PortalGroup1 to InitiatorGroup2
 # "64" ==> iSCSI queue depth 64
 # "-d" ==> disable CHAP authentication
-$rpc_py iscsi_create_target_node Target3 Target3_alias 'Ceph0:0' $PORTAL_TAG:$INITIATOR_TAG 64 -d
+$rpc_py iscsi_create_target_node Target3 Target3_alias 'Stone0:0' $PORTAL_TAG:$INITIATOR_TAG 64 -d
 sleep 1
 
 iscsiadm -m discovery -t sendtargets -p $TARGET_IP:$ISCSI_PORT

@@ -23,7 +23,7 @@ sequences will be discussed; for the latest source code reference refer to the [
 Blobstore is a persistent, power-fail safe block allocator designed to be used as the local storage system
 backing a higher level storage service, typically in lieu of a traditional filesystem. These higher level services
 can be local databases or key/value stores (MySQL, RocksDB), they can be dedicated appliances (SAN, NAS), or
-distributed storage systems (ex. Ceph, Cassandra). It is not designed to be a general purpose filesystem, however,
+distributed storage systems (ex. Stone, Cassandra). It is not designed to be a general purpose filesystem, however,
 and it is intentionally not POSIX compliant. To avoid confusion, we avoid references to files or objects instead
 using the term 'blob'. The Blobstore is designed to allow asynchronous, uncached, parallel reads and writes to
 groups of blocks on a block device called 'blobs'. Blobs are typically large, measured in at least hundreds of

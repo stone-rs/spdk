@@ -125,7 +125,7 @@ CONFIG_NVME_CUSE=n
 CONFIG_FC=n
 CONFIG_FC_PATH=
 
-# Build Ceph RBD support in bdev modules
+# Build Stone RBD support in bdev modules
 # Requires librbd development libraries
 CONFIG_RBD=n
 

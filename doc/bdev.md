@@ -14,7 +14,7 @@ storage stack. Specifically, this library provides the following
 functionality:
 
 * A pluggable module API for implementing block devices that interface with different types of block storage devices.
-* Driver modules for NVMe, malloc (ramdisk), Linux AIO, virtio-scsi, Ceph RBD, Pmem and Vhost-SCSI Initiator and more.
+* Driver modules for NVMe, malloc (ramdisk), Linux AIO, virtio-scsi, Stone RBD, Pmem and Vhost-SCSI Initiator and more.
 * An application API for enumerating and claiming SPDK block devices and then performing operations (read, write, unmap, etc.) on those devices.
 * Facilities to stack block devices to create complex I/O pipelines, including logical volume management (lvol) and partition support (GPT).
 * Configuration of block devices via JSON-RPC.
@@ -47,11 +47,11 @@ with detailed information can be found on the @ref jsonrpc_components_bdev page.
 
 ## Common Block Device Configuration Examples
 
-## Ceph RBD {#bdev_config_rbd}
+## Stone RBD {#bdev_config_rbd}
 
-The SPDK RBD bdev driver provides SPDK block layer access to Ceph RADOS block
-devices (RBD). Ceph RBD devices are accessed via librbd and librados libraries
-to access the RADOS block device exported by Ceph. To create Ceph bdev RPC
+The SPDK RBD bdev driver provides SPDK block layer access to Stone RADOS block
+devices (RBD). Stone RBD devices are accessed via librbd and librados libraries
+to access the RADOS block device exported by Stone. To create Stone bdev RPC
 command `bdev_rbd_create` should be used.
 
 Example command

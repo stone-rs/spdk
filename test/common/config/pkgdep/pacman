@@ -20,7 +20,7 @@ packages=(
 	valgrind
 	jq
 	nvme-cli
-	ceph
+	stone
 	gdb
 	fio
 	linux-headers

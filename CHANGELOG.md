@@ -1353,7 +1353,7 @@ A new RPC `thread_get_pollers` has been added to retrieve pollers from SPDK thre
 
 A new RPC `thread_get_io_channels` has been added to retrieve I/O channels from SPDK threads.
 
-A new RPC `bdev_rbd_resize` has been added to resize Ceph RBD bdevs.
+A new RPC `bdev_rbd_resize` has been added to resize Stone RBD bdevs.
 
 ### sock
 
@@ -3494,8 +3494,8 @@ The bdev status returned from each I/O has been extended to pass through NVMe
 or SCSI status codes directly in cases where the underlying device can provide
 a more specific status code.
 
-A Ceph RBD (RADOS Block Device) blockdev driver has been added.  This allows the
-`iscsi_tgt` and `nvmf_tgt` apps to export Ceph RBD volumes as iSCSI LUNs or
+A Stone RBD (RADOS Block Device) blockdev driver has been added.  This allows the
+`iscsi_tgt` and `nvmf_tgt` apps to export Stone RBD volumes as iSCSI LUNs or
 NVMe namespaces.
 
 ### General changes

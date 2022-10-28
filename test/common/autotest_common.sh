@@ -171,7 +171,7 @@ export PYTHONPATH=$PYTHONPATH:$rootdir/scripts
 export PYTHONDONTWRITEBYTECODE=1
 
 # Export flag to skip the known bug that exists in librados
-# Bug is reported on ceph bug tracker with number 24078
+# Bug is reported on stone bug tracker with number 24078
 export ASAN_OPTIONS=new_delete_type_mismatch=0:disable_coredump=0
 export UBSAN_OPTIONS='halt_on_error=1:print_stacktrace=1:abort_on_error=1:disable_coredump=0'
 
@@ -870,7 +870,7 @@ function rbd_setup() {
 	# $1 = monitor ip address
 	# $2 = name of the namespace
 	if [ -z "$1" ]; then
-		echo "No monitor IP address provided for ceph"
+		echo "No monitor IP address provided for stone"
 		exit 1
 	fi
 	if [ -n "$2" ]; then
@@ -882,22 +882,22 @@ function rbd_setup() {
 		fi
 	fi
 
-	if hash ceph; then
+	if hash stone; then
 		export PG_NUM=128
 		export RBD_POOL=rbd
 		export RBD_NAME=foo
-		$NS_CMD $rootdir/scripts/ceph/stop.sh || true
-		$NS_CMD $rootdir/scripts/ceph/start.sh $1
+		$NS_CMD $rootdir/scripts/stone/stop.sh || true
+		$NS_CMD $rootdir/scripts/stone/start.sh $1
 
-		$NS_CMD ceph osd pool create $RBD_POOL $PG_NUM || true
+		$NS_CMD stone osd pool create $RBD_POOL $PG_NUM || true
 		$NS_CMD rbd create $RBD_NAME --size 1000
 	fi
 }
 
 function rbd_cleanup() {
-	if hash ceph; then
-		$rootdir/scripts/ceph/stop.sh || true
-		rm -f /var/tmp/ceph_raw.img
+	if hash stone; then
+		$rootdir/scripts/stone/stop.sh || true
+		rm -f /var/tmp/stone_raw.img
 	fi
 }
 

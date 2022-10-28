@@ -739,9 +739,9 @@ if __name__ == "__main__":
                                                       key_file=args.key_file))
 
     p = subparsers.add_parser('bdev_rbd_register_cluster',
-                              help='Add a Rados cluster with ceph rbd backend')
+                              help='Add a Rados cluster with stone rbd backend')
     p.add_argument('name', help="Name of the Rados cluster only known to rbd bdev")
-    p.add_argument('--user', help="Ceph user name (i.e. admin, not client.admin)", required=False)
+    p.add_argument('--user', help="Stone user name (i.e. admin, not client.admin)", required=False)
     p.add_argument('--config-param', action='append', metavar='key=value',
                    help="adds a key=value configuration option for rados_conf_set (default: rely on config file)")
     p.add_argument('--config-file', help="The file path of the Rados configuration file", required=False)
@@ -784,9 +784,9 @@ if __name__ == "__main__":
                                             uuid=args.uuid))
 
     p = subparsers.add_parser('bdev_rbd_create', aliases=['construct_rbd_bdev'],
-                              help='Add a bdev with ceph rbd backend')
+                              help='Add a bdev with stone rbd backend')
     p.add_argument('-b', '--name', help="Name of the bdev", required=False)
-    p.add_argument('--user', help="Ceph user name (i.e. admin, not client.admin)", required=False)
+    p.add_argument('--user', help="Stone user name (i.e. admin, not client.admin)", required=False)
     p.add_argument('--config', action='append', metavar='key=value',
                    help="adds a key=value configuration option for rados_conf_set (default: rely on config file)")
     p.add_argument('pool_name', help='rbd pool name')
